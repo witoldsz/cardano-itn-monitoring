@@ -6,7 +6,7 @@ LOG_FILE=./log.txt
 
 reboot=$($NODE_BIN ./status-processor.js | tee -a $LOG_FILE | grep REBOOT)
 
-if [ -z reboot ]
+if ! [ -z "$reboot" ]
 then
   systemctl restart cardano-testnet.service
 fi
